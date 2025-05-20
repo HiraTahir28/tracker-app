@@ -30,6 +30,25 @@ playground.xcworkspace
 # .swiftpm
 
 .build/
+DerivedData/
+*.xcarchive
+*.xcresult
+
+*.xcworkspace
+xcuserdata/
+*.xcuserstate
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+
+# Simulator logs
+~/Library/Logs/CoreSimulator/
+
+# IDEs
+.idea/
+.vscode/
+
+# XCFrameworks (if building binary frameworks)
+*.xcframework
 
 # CocoaPods
 #
@@ -39,8 +58,7 @@ playground.xcworkspace
 #
 # Pods/
 #
-# Add this line if you want to avoid checking in source code from the Xcode workspace
-# *.xcworkspace
+
 
 # Carthage
 #
