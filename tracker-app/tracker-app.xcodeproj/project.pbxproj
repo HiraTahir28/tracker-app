@@ -10,9 +10,22 @@
 		22481B112DDBE5FF00B6AFD0 /* tracker-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tracker-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		22C877692DDE5E6600A1698C /* Exceptions for "tracker-app" folder in "tracker-app" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 22481B102DDBE5FF00B6AFD0 /* tracker-app */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		22481B132DDBE5FF00B6AFD0 /* tracker-app */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				22C877692DDE5E6600A1698C /* Exceptions for "tracker-app" folder in "tracker-app" target */,
+			);
 			path = "tracker-app";
 			sourceTree = "<group>";
 		};
@@ -255,6 +268,8 @@
 				DEVELOPMENT_TEAM = 7U77RD754A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "tracker-app/Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Just need to get you coordinates every now and then.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +299,8 @@
 				DEVELOPMENT_TEAM = 7U77RD754A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "tracker-app/Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Just need to get you coordinates every now and then.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
