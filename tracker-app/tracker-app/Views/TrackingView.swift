@@ -1,11 +1,7 @@
 import SwiftUI
 
-struct TrackingView: View {
-    @StateObject private var viewModel: TrackingViewModel
-    
-    init(gpsService: GPSService = GPSServiceImpl()) {
-        _viewModel = StateObject(wrappedValue: TrackingViewModel(gpsService: gpsService))
-    }
+struct TrackingView<VM: TrackingViewModel>: View {
+    @StateObject var viewModel: VM
     
     var body: some View {
         ZStack {
@@ -50,8 +46,4 @@ struct TrackingView: View {
         }
         .disabled(!isEnabled)
     }
-}
-
-#Preview {
-    TrackingView()
 }

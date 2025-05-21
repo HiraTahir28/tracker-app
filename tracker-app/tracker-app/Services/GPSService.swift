@@ -1,5 +1,6 @@
 import Foundation
 import CoreLocation
+import SwiftData
 
 public protocol GPSService: AnyObject {
     func startTracking()
@@ -7,10 +8,14 @@ public protocol GPSService: AnyObject {
 }
 
 final class GPSServiceImpl: NSObject, GPSService {
+    private let gpsDBService: GPSDBService
     private let locationManager = CLLocationManager()
+    
     private var timer: Timer?
 
-    override init() {
+    init(gpsDBService: GPSDBService) {
+        self.gpsDBService = gpsDBService
+
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -46,6 +51,14 @@ final class GPSServiceImpl: NSObject, GPSService {
             longitude: location.coordinate.longitude
         )
         print("Tracked Location -> \(gpsEntry)")
+      
+        Task {
+            do {
+                try await gpsDBService.save(entry: gpsEntry)
+            } catch {
+                print("Failed to save GPS entry: \(error)")
+            }
+        }
     }
     
     func stopTracking() {
