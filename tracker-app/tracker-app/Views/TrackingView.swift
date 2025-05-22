@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct TrackingView: View {
-    @StateObject private var viewModel = TrackingViewModel()
+struct TrackingView<VM: TrackingViewModel>: View {
+    @StateObject var viewModel: VM
     
     var body: some View {
         ZStack {
@@ -46,8 +46,4 @@ struct TrackingView: View {
         }
         .disabled(!isEnabled)
     }
-}
-
-#Preview {
-    TrackingView()
 }
