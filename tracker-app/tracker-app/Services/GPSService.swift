@@ -19,13 +19,14 @@ final class GPSServiceImpl: NSObject, GPSService {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
     }
 
     func startTracking() {
         let status = locationManager.authorizationStatus
         guard status == .authorizedWhenInUse || status == .authorizedAlways else {
-            print("Location permission not granted yet!")
             locationManager.requestWhenInUseAuthorization()
             return
         }
@@ -50,7 +51,6 @@ final class GPSServiceImpl: NSObject, GPSService {
             latitude: location.coordinate.latitude,
             longitude: location.coordinate.longitude
         )
-        print("Tracked Location -> \(gpsEntry)")
       
         Task {
             do {
@@ -72,7 +72,7 @@ extension GPSServiceImpl: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
         case .notDetermined:
-            manager.requestWhenInUseAuthorization()
+            manager.requestAlwaysAuthorization()
             
         default:
             break
