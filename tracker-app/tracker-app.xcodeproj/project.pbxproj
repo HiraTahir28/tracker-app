@@ -269,7 +269,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "tracker-app/Info.plist";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Just need to get you coordinates every now and then.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We use your location to track your movement.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use your location to track your movement.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -300,7 +301,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "tracker-app/Info.plist";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Just need to get you coordinates every now and then.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We use your location to track your movement.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use your location to track your movement.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

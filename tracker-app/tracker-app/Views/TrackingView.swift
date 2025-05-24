@@ -13,14 +13,14 @@ struct TrackingView<VM: TrackingViewModel>: View {
                     title: "Start Tracking",
                     color: .green,
                     isEnabled: !viewModel.isTracking,
-                    action: { viewModel.send(.start) }
+                    action: { await viewModel.send(.start) }
                 )
                 
                 trackingButton(
                     title: "Stop Tracking",
                     color: .red,
                     isEnabled: viewModel.isTracking,
-                    action: { viewModel.send(.stop) }
+                    action: { await viewModel.send(.stop) }
                 )
             }
             .padding()
@@ -33,9 +33,11 @@ struct TrackingView<VM: TrackingViewModel>: View {
         title: String,
         color: Color,
         isEnabled: Bool,
-        action: @escaping () -> Void
+        action: @escaping () async -> Void
     ) -> some View {
-        Button(action: action) {
+        Button {
+            Task { await action() }
+        } label: {
             Text(title)
                 .foregroundColor(.white)
                 .fontWeight(isEnabled ? .heavy : .regular)

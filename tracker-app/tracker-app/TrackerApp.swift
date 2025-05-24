@@ -28,8 +28,22 @@ private extension TrackerApp {
     func createTrackingViewModel() -> TrackingViewModelImpl {
         let modelContainer = createModelContainer()
         let gpsDBService = GPSDBServiceImpl(modelContainer: modelContainer)
+        let networkService = NetworkService()
         let gpsService = GPSServiceImpl(gpsDBService: gpsDBService)
-        return TrackingViewModelImpl(gpsService: gpsService)
+        let authService = AuthServiceImpl(networkService: networkService)
+        let gpsNetworkService = GPSNetworkServiceImpl(
+            networkService: networkService,
+            authService: authService
+        )
+        let gpsSyncService = GPSSyncServiceImpl(
+            gpsNetworkService: gpsNetworkService,
+            dbService: gpsDBService
+        )
+        
+        return TrackingViewModelImpl(
+            gpsService: gpsService,
+            gpsSyncService: gpsSyncService
+        )
     }
     
     func createModelContainer() -> ModelContainer {
