@@ -18,14 +18,14 @@ public final class GPSSyncServiceImpl: GPSSyncService {
         do {
             try await syncChunkedEntries()
         } catch {
-            try? await Task.sleep(for: .seconds(10 * 60))
+            try? await Task.sleep(for: .seconds(Constants.apiRetryInterval))
             await syncEntries()
         }
     }
     
     private func syncChunkedEntries() async throws {
         let entries = try await dbService.fetchAll()
-        let chunks = entries.chunked(by: 100)
+        let chunks = entries.chunked(by: Constants.maxChunkSize)
         
         try await withThrowingTaskGroup(of: Void.self) { group in
             for chunk in chunks {

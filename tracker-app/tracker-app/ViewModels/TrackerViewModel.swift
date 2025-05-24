@@ -23,6 +23,10 @@ public final class TrackingViewModelImpl: TrackingViewModel {
     ) {
         self.gpsService = gpsService
         self.gpsSyncService = gpsSyncService
+        
+        Task {
+            await gpsSyncService.syncEntries()
+        }
     }
     
     @MainActor

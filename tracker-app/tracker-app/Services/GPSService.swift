@@ -37,7 +37,10 @@ final class GPSServiceImpl: NSObject, GPSService {
             createGPSEntry(of: location)
         }
 
-        timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(
+            withTimeInterval: Constants.gpsRecordingInterval,
+            repeats: true
+        ) { [weak self] _ in
             guard let self = self,
                   let location = self.locationManager.location else { return }
 
